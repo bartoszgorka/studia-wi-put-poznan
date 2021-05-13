@@ -1,0 +1,18 @@
+class DirList extends DefaultTask {
+  String fileSet
+  
+  @TaskAction
+  void listMyDir() {
+    File directory = new File(fileSet)
+    directory.eachFile {
+      println it.name
+    }
+  }
+}
+
+task list (type: DirList) {
+  doFirst {
+    // fileSet = new File(".").getAbsolutePath()
+    fileSet = myDir
+  }
+}

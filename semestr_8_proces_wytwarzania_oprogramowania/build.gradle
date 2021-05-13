@@ -1,0 +1,19 @@
+tasks.register('a') {
+  doFirst {
+    println 'Task A'
+  }
+  dependsOn('b', 'c')
+}
+
+tasks.register('b') {
+  doFirst {
+    println 'Task BBBBB'
+  }
+  dependsOn c
+}
+
+tasks.register('c') {
+  doFirst {
+    println 'Task master C'
+  }
+}

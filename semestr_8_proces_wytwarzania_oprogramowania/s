@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    container_name: db
+    expose:
+      - '5432'
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=student
+      - POSTGRES_PASSWORD=student
+  ri:
+    image: registry.gitlab.com/protective-h2020-eu/meta-alert-prioritisation/rule-inducer:1.5.0
+    container_name: ri
+    ports:
+      - '8009:8009'
+    environment:
+      - WAIT_FOR_HOST_AND_PORT=db:5432
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/test
+      - SPRING_DATASOURCE_USERNAME=student
+      - SPRING_DATASOURCE_PASSWORD=student
+    depends_on:
+      - db
+  rg:
+    image: registry.gitlab.com/protective-h2020-eu/meta-alert-prioritisation/ranking-generator:1.7.1
+    container_name: rg
+    ports:
+      - '8008:8008'
+    environment:
+      - WAIT_FOR_HOST_AND_PORT=db:5432
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/test
+      - SPRING_DATASOURCE_USERNAME=student
+      - SPRING_DATASOURCE_PASSWORD=student
+    depends_on:
+      - db
+      - ri

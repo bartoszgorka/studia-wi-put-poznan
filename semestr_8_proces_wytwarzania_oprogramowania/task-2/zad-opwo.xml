@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metalink xmls="urn:ietf:params:xml:ns:metalink">
+  <published>2019-05-21T06:33:25Z</published>
+  <file name="task-2.iml">
+    <size>690</size>
+    <hash type="MD5">96c4edaabb99d3f92f0e2227bc9d80f6</hash>
+    <url>http://zad-opwo.com/download/task-2.iml</url>
+  </file>
+  <file name="gradle-wrapper.jar">
+    <size>56172</size>
+    <hash type="MD5">47b49ad9a71a3957bad916d7d0d4425a</hash>
+    <url>http://zad-opwo.com/download/gradle/wrapper/gradle-wrapper.jar</url>
+  </file>
+  <file name="gradle-wrapper.properties">
+    <size>201</size>
+    <hash type="MD5">26177f82455f3ad8cd2a0aa20fb332d8</hash>
+    <url>http://zad-opwo.com/download/gradle/wrapper/gradle-wrapper.properties</url>
+  </file>
+  <file name="buildSrc.lock">
+    <size>2</size>
+    <hash type="MD5">25daad3d9e60b45043a70c4ab7d3b1c6</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/noVersion/buildSrc.lock</url>
+  </file>
+  <file name="gc.properties">
+    <size>0</size>
+    <hash type="MD5">d41d8cd98f00b204e9800998ecf8427e</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/vcs-1/gc.properties</url>
+  </file>
+  <file name="executionHistory.lock">
+    <size>17</size>
+    <hash type="MD5">99020a2ff86c5dddbe766129569d82f3</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/5.4.1/executionHistory/executionHistory.lock</url>
+  </file>
+  <file name="executionHistory.bin">
+    <size>88260</size>
+    <hash type="MD5">5b576fa1a3fa9abfadf3316ec124183d</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/5.4.1/executionHistory/executionHistory.bin</url>
+  </file>
+  <file name="fileContent.lock">
+    <size>17</size>
+    <hash type="MD5">6b0e0e7799fa42c529618e67dda69b5e</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/5.4.1/fileContent/fileContent.lock</url>
+  </file>
+  <file name="cache.properties">
+    <size>52</size>
+    <hash type="MD5">7747c17fbfe24d0400becb5e563ca7f4</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/buildOutputCleanup/cache.properties</url>
+  </file>
+  <file name="outputFiles.bin">
+    <size>18857</size>
+    <hash type="MD5">eb6582ac0a045ec4ae50a10d76a015bc</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/buildOutputCleanup/outputFiles.bin</url>
+  </file>
+  <file name="buildOutputCleanup.lock">
+    <size>17</size>
+    <hash type="MD5">29a5d82d460289ecd9dba8f07c57cfde</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/buildOutputCleanup/buildOutputCleanup.lock</url>
+  </file>
+  <file name="taskHistory.bin">
+    <size>43937</size>
+    <hash type="MD5">b3719542431c0db6996643c480de533d</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/4.10/taskHistory/taskHistory.bin</url>
+  </file>
+  <file name="taskHistory.lock">
+    <size>17</size>
+    <hash type="MD5">88548323874b46820db91f3f632781e2</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/4.10/taskHistory/taskHistory.lock</url>
+  </file>
+  <file name="fileContent.lock">
+    <size>17</size>
+    <hash type="MD5">8da232a4d3efd99c7203c1e1f45c6c0b</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/4.10/fileContent/fileContent.lock</url>
+  </file>
+  <file name="gc.properties">
+    <size>0</size>
+    <hash type="MD5">d41d8cd98f00b204e9800998ecf8427e</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/4.10/gc.properties</url>
+  </file>
+  <file name="last-build.bin">
+    <size>1</size>
+    <hash type="MD5">93b885adfe0da089cdf634904fd59f71</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/4.10/fileChanges/last-build.bin</url>
+  </file>
+  <file name="fileHashes.lock">
+    <size>17</size>
+    <hash type="MD5">ba01d0664606fd15a34562ffe9d8980f</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/4.10/fileHashes/fileHashes.lock</url>
+  </file>
+  <file name="fileHashes.bin">
+    <size>18547</size>
+    <hash type="MD5">aab6c3779445d22b38881ac018e18d41</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.gradle/4.10/fileHashes/fileHashes.bin</url>
+  </file>
+  <file name="FileData.class">
+    <size>3856</size>
+    <hash type="MD5">1621feace3a9c9f7d2fc3161371129e1</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/FileData.class</url>
+  </file>
+  <file name="XMLOutputGenerator$_generateXML_closure1$_closure2$_closure3.class">
+    <size>3254</size>
+    <hash type="MD5">508411b7f563662749306279b06deea3</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/XMLOutputGenerator$_generateXML_closure1$_closure2$_closure3.class</url>
+  </file>
+  <file name="HashObject.class">
+    <size>3095</size>
+    <hash type="MD5">53fd2fa0d42fa2ae43c07bd13736736b</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/HashObject.class</url>
+  </file>
+  <file name="XMLOutputGenerator$_generateXML_closure1.class">
+    <size>3381</size>
+    <hash type="MD5">2d9a0d218a1f9e86c1c062426eea85f7</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/XMLOutputGenerator$_generateXML_closure1.class</url>
+  </file>
+  <file name="Metalink.class">
+    <size>6073</size>
+    <hash type="MD5">08f813232e9b51d9e78cc39fc28afd5c</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/Metalink.class</url>
+  </file>
+  <file name="Metalink$_generateMD5_closure1.class">
+    <size>4011</size>
+    <hash type="MD5">789d14147d326920ab3a7df24d02921c</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/Metalink$_generateMD5_closure1.class</url>
+  </file>
+  <file name="Metalink$_calculateMD5Hash_closure2$_closure3.class">
+    <size>2872</size>
+    <hash type="MD5">78a624165e6f1316a1af53613c098502</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/Metalink$_calculateMD5Hash_closure2$_closure3.class</url>
+  </file>
+  <file name="MetalinkCollection.class">
+    <size>3867</size>
+    <hash type="MD5">6b21443f0e215324eb9a3433006d7087</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/MetalinkCollection.class</url>
+  </file>
+  <file name="Metalink$_calculateMD5Hash_closure2.class">
+    <size>2938</size>
+    <hash type="MD5">c48229c8e315b74b6ab5978afc531f54</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/Metalink$_calculateMD5Hash_closure2.class</url>
+  </file>
+  <file name="XMLOutputGenerator$_generateXML_closure1$_closure2.class">
+    <size>2837</size>
+    <hash type="MD5">eaf73848adca2d16fedeab2c60117936</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/XMLOutputGenerator$_generateXML_closure1$_closure2.class</url>
+  </file>
+  <file name="Metalink$_calculateMD5Hash_closure2$_closure3$_closure4.class">
+    <size>2275</size>
+    <hash type="MD5">3b86bbe3e83f0bf7994aa05b23b666d3</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/Metalink$_calculateMD5Hash_closure2$_closure3$_closure4.class</url>
+  </file>
+  <file name="XMLOutputGenerator.class">
+    <size>4681</size>
+    <hash type="MD5">f2594a0a13fc1b48335c3ff402a75b1e</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/classes/groovy/main/org/opwo/gradle/XMLOutputGenerator.class</url>
+  </file>
+  <file name="buildSrc.jar">
+    <size>21892</size>
+    <hash type="MD5">2b23d281a92d79d9e915b6190feb80f6</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/libs/buildSrc.jar</url>
+  </file>
+  <file name="MANIFEST.MF">
+    <size>25</size>
+    <hash type="MD5">92d04d6bd8a0235843240bba30d2f091</hash>
+    <url>http://zad-opwo.com/download/buildSrc/build/tmp/jar/MANIFEST.MF</url>
+  </file>
+  <file name="buildSrc.iml">
+    <size>336</size>
+    <hash type="MD5">52db5efd0fe9f576a1302b8c4b5eac6c</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.idea/buildSrc.iml</url>
+  </file>
+  <file name="encodings.xml">
+    <size>135</size>
+    <hash type="MD5">4e6f7b2f33e2e4662d7f2a350c20cffb</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.idea/encodings.xml</url>
+  </file>
+  <file name="vcs.xml">
+    <size>186</size>
+    <hash type="MD5">4b9786b6d311d52068f211393c8ed770</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.idea/vcs.xml</url>
+  </file>
+  <file name="workspace.xml">
+    <size>7618</size>
+    <hash type="MD5">dfa0d08e38f307344101ea4253a14d2d</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.idea/workspace.xml</url>
+  </file>
+  <file name="modules.xml">
+    <size>268</size>
+    <hash type="MD5">d56ab54db9f410e4da804935d7146344</hash>
+    <url>http://zad-opwo.com/download/buildSrc/.idea/modules.xml</url>
+  </file>
+  <file name="Metalink.groovy">
+    <size>1806</size>
+    <hash type="MD5">559780518d1ba908c29c19c71260ee85</hash>
+    <url>http://zad-opwo.com/download/buildSrc/src/main/groovy/org/opwo/gradle/Metalink.groovy</url>
+  </file>
+  <file name="XMLOutputGenerator.groovy">
+    <size>1300</size>
+    <hash type="MD5">04cf4463c44c418acc4f91d620dc14cd</hash>
+    <url>http://zad-opwo.com/download/buildSrc/src/main/groovy/org/opwo/gradle/XMLOutputGenerator.groovy</url>
+  </file>
+  <file name="FileData.groovy">
+    <size>282</size>
+    <hash type="MD5">301423075593632e74c86e6dce00c97c</hash>
+    <url>http://zad-opwo.com/download/buildSrc/src/main/groovy/org/opwo/gradle/FileData.groovy</url>
+  </file>
+  <file name="MetalinkCollection.groovy">
+    <size>284</size>
+    <hash type="MD5">df77adcc21e0fdd93044f1d50fca30c3</hash>
+    <url>http://zad-opwo.com/download/buildSrc/src/main/groovy/org/opwo/gradle/MetalinkCollection.groovy</url>
+  </file>
+  <file name="HashObject.groovy">
+    <size>182</size>
+    <hash type="MD5">14118fbf7eba7b4a4f6e42976c6ffc8d</hash>
+    <url>http://zad-opwo.com/download/buildSrc/src/main/groovy/org/opwo/gradle/HashObject.groovy</url>
+  </file>
+  <file name="gradlew">
+    <size>5296</size>
+    <hash type="MD5">857faf4b42fc9e324fb40b7223f2a94a</hash>
+    <url>http://zad-opwo.com/download/gradlew</url>
+  </file>
+  <file name=".gitignore">
+    <size>71</size>
+    <hash type="MD5">03edde75f8f3a403f464f4ee7e6f53cc</hash>
+    <url>http://zad-opwo.com/download/.gitignore</url>
+  </file>
+  <file name="zad-opwo.xml">
+    <size>43890</size>
+    <hash type="MD5">74ab8c964fbda823a2df0b707f36f35d</hash>
+    <url>http://zad-opwo.com/download/zad-opwo.xml</url>
+  </file>
+  <file name="build.gradle">
+    <size>158</size>
+    <hash type="MD5">c402c6ccd7460d428d94a3dd9c1fdbaa</hash>
+    <url>http://zad-opwo.com/download/build.gradle</url>
+  </file>
+  <file name="gc.properties">
+    <size>0</size>
+    <hash type="MD5">d41d8cd98f00b204e9800998ecf8427e</hash>
+    <url>http://zad-opwo.com/download/.gradle/vcs-1/gc.properties</url>
+  </file>
+  <file name="executionHistory.lock">
+    <size>39</size>
+    <hash type="MD5">2dbd2ffc1e8e975ceb13f0941722c55e</hash>
+    <url>http://zad-opwo.com/download/.gradle/5.4.1/executionHistory/executionHistory.lock</url>
+  </file>
+  <file name="executionHistory.bin">
+    <size>18732</size>
+    <hash type="MD5">c4b93b506ab884f41fe825c4c340da3c</hash>
+    <url>http://zad-opwo.com/download/.gradle/5.4.1/executionHistory/executionHistory.bin</url>
+  </file>
+  <file name="gc.properties">
+    <size>0</size>
+    <hash type="MD5">d41d8cd98f00b204e9800998ecf8427e</hash>
+    <url>http://zad-opwo.com/download/.gradle/5.4.1/gc.properties</url>
+  </file>
+  <file name="last-build.bin">
+    <size>1</size>
+    <hash type="MD5">93b885adfe0da089cdf634904fd59f71</hash>
+    <url>http://zad-opwo.com/download/.gradle/5.4.1/fileChanges/last-build.bin</url>
+  </file>
+  <file name="fileHashes.lock">
+    <size>39</size>
+    <hash type="MD5">7ba0c05df0dcc08af51236e81c8deb05</hash>
+    <url>http://zad-opwo.com/download/.gradle/5.4.1/fileHashes/fileHashes.lock</url>
+  </file>
+  <file name="fileHashes.bin">
+    <size>20097</size>
+    <hash type="MD5">e565224d8e8771b18be4611c05896c25</hash>
+    <url>http://zad-opwo.com/download/.gradle/5.4.1/fileHashes/fileHashes.bin</url>
+  </file>
+  <file name="cache.properties">
+    <size>52</size>
+    <hash type="MD5">00d7473cd92e28c40c97f683637b7dbf</hash>
+    <url>http://zad-opwo.com/download/.gradle/buildOutputCleanup/cache.properties</url>
+  </file>
+  <file name="buildOutputCleanup.lock">
+    <size>39</size>
+    <hash type="MD5">97968af0e4dd6943285b0b465cd5fe21</hash>
+    <url>http://zad-opwo.com/download/.gradle/buildOutputCleanup/buildOutputCleanup.lock</url>
+  </file>
+  <file name="taskHistory.bin">
+    <size>20614</size>
+    <hash type="MD5">abc4326364816f01c9cd4ecc19b6f9b3</hash>
+    <url>http://zad-opwo.com/download/.gradle/4.10/taskHistory/taskHistory.bin</url>
+  </file>
+  <file name="taskHistory.lock">
+    <size>17</size>
+    <hash type="MD5">f8ecf850d38c342d289e7ed614d5d130</hash>
+    <url>http://zad-opwo.com/download/.gradle/4.10/taskHistory/taskHistory.lock</url>
+  </file>
+  <file name="gc.properties">
+    <size>0</size>
+    <hash type="MD5">d41d8cd98f00b204e9800998ecf8427e</hash>
+    <url>http://zad-opwo.com/download/.gradle/4.10/gc.properties</url>
+  </file>
+  <file name="last-build.bin">
+    <size>1</size>
+    <hash type="MD5">93b885adfe0da089cdf634904fd59f71</hash>
+    <url>http://zad-opwo.com/download/.gradle/4.10/fileChanges/last-build.bin</url>
+  </file>
+  <file name="fileHashes.lock">
+    <size>17</size>
+    <hash type="MD5">d23dd04fdc251c4999250020b51cd6b5</hash>
+    <url>http://zad-opwo.com/download/.gradle/4.10/fileHashes/fileHashes.lock</url>
+  </file>
+  <file name="fileHashes.bin">
+    <size>21297</size>
+    <hash type="MD5">94217c0f5787541e83f27ca205b898a2</hash>
+    <url>http://zad-opwo.com/download/.gradle/4.10/fileHashes/fileHashes.bin</url>
+  </file>
+  <file name="gradle.properties">
+    <size>46</size>
+    <hash type="MD5">b0785c8bc3d5031631e0f6a505284d5c</hash>
+    <url>http://zad-opwo.com/download/gradle.properties</url>
+  </file>
+  <file name="gradlew.bat">
+    <size>2260</size>
+    <hash type="MD5">c7df39a6fdb0bcbfa78043a174198425</hash>
+    <url>http://zad-opwo.com/download/gradlew.bat</url>
+  </file>
+  <file name="encodings.xml">
+    <size>135</size>
+    <hash type="MD5">4e6f7b2f33e2e4662d7f2a350c20cffb</hash>
+    <url>http://zad-opwo.com/download/.idea/encodings.xml</url>
+  </file>
+  <file name="gradle.xml">
+    <size>756</size>
+    <hash type="MD5">96fb823a9362725db6e0403c23f4acfc</hash>
+    <url>http://zad-opwo.com/download/.idea/gradle.xml</url>
+  </file>
+  <file name="vcs.xml">
+    <size>183</size>
+    <hash type="MD5">f990e6d29e03715a04983dd2f51d3595</hash>
+    <url>http://zad-opwo.com/download/.idea/vcs.xml</url>
+  </file>
+  <file name="workspace.xml">
+    <size>14265</size>
+    <hash type="MD5">9a61eaecd94edbe7168893d2666e12bb</hash>
+    <url>http://zad-opwo.com/download/.idea/workspace.xml</url>
+  </file>
+  <file name="modules.xml">
+    <size>695</size>
+    <hash type="MD5">c513f958294cb8a2ead8395f3a203a88</hash>
+    <url>http://zad-opwo.com/download/.idea/modules.xml</url>
+  </file>
+  <file name="task-2.buildSrc.test.iml">
+    <size>1796</size>
+    <hash type="MD5">6c1c8d3dd7d7e29f1c62b6282fa84dc8</hash>
+    <url>http://zad-opwo.com/download/.idea/modules/task-2.buildSrc.test.iml</url>
+  </file>
+  <file name="task-2.buildSrc.main.iml">
+    <size>1758</size>
+    <hash type="MD5">5bb52128222e9b95e010fd67c0eeaa3a</hash>
+    <url>http://zad-opwo.com/download/.idea/modules/task-2.buildSrc.main.iml</url>
+  </file>
+  <file name="task-2.buildSrc.iml">
+    <size>827</size>
+    <hash type="MD5">e6e21ada311cbdf93d83aa44982a315b</hash>
+    <url>http://zad-opwo.com/download/.idea/modules/task-2.buildSrc.iml</url>
+  </file>
+  <file name="misc.xml">
+    <size>273</size>
+    <hash type="MD5">708afe2fa084f39b5309eb22d1c476c4</hash>
+    <url>http://zad-opwo.com/download/.idea/misc.xml</url>
+  </file>
+  <file name="compiler.xml">
+    <size>298</size>
+    <hash type="MD5">02f22529b8d2dab4276289ca270e9ae2</hash>
+    <url>http://zad-opwo.com/download/.idea/compiler.xml</url>
+  </file>
+</metalink>

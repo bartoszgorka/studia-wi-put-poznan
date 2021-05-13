@@ -1,0 +1,12 @@
+# Gradle
+.gradle
+
+# Original requirements
+GradleTasks.docx
+
+# Extra files
+.DS_Store
+
+# Intellij
+.idea/
+*.iml

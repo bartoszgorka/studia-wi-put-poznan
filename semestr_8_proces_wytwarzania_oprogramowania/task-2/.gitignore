@@ -1,0 +1,7 @@
+# Intellij
+buildSrc/build/*
+
+# Gradlew
+/gradlew
+/gradlew.bat
+/gradle/*
