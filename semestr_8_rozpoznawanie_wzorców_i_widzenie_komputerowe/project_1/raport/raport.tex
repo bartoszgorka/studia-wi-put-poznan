@@ -1,0 +1,167 @@
+\documentclass{mwart}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{polski}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{amsmath}
+% \usepackage[final]{graphicx}
+\usepackage[a4paper, total={6in, 9in}]{geometry}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{indentfirst}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\title{
+    \textbf{Przetwarzanie i rozpoznawanie obrazów}\\
+    \begin{large}
+        Projekt 1
+    \end{large}
+}
+
+\author{
+    Rozwadowski Mikołaj\\
+  \texttt{127205}
+  \and
+    Górka Bartosz\\
+  \texttt{127228}
+}
+
+\date{}
+
+\maketitle
+
+\section{Charakterystyka systemu}
+\label{section:wstep}
+System porówywania obrazów został przygotowany na wzór frameworków, gdzie każda z cech liczona jest indywidualnie. W folderze \texttt{features} zawarto miary podobieństw dwóch obrazów (każda z nich może być aktywowana bądź dezaktywowana niezależnie od pozostałych).
+
+Za poprawność działania odpowiada klasa \texttt{Matcher}, w której zastosowano listę cech (tj. pole \texttt{self.features}). Na podstawie sumy wartości podobieństw między obrazami zostaje przygotowana odpowiedź systemu w formacie zgodnym z wymaganiami projektu.
+
+\section{Wstępne przetwarzanie}
+\label{section:preprocessing}
+Przed rozpoczęciem analizy cech obrazu i próbą porównania następuje proces przygotowania obrazu. Jego realizacja została zaprezentowana w postaci pseudokodu poniżej.
+
+\begin{verbatim}
+Wczytaj obraz z wykorzystaniem cv2.imread(filename, 0)
+Dokonaj rotacji i przeskalowania obrazu
+Wyznacz kontur dzięki funkcji cv2.findContours
+Wyznacz polygon - cv2.approxPolyDP
+Dokonaj obliczenia charakterystyki udziału koloru białego i czarnego w kolumnach
+\end{verbatim}
+
+W przedstawionym powyżej pseudokodzie są dwie metody wymagające głębszej analizy. Pierwsza z nich to operacja rotacji i przeskalowania zaprezentowana w postaci następującego pseudokodu:
+
+\begin{verbatim}
+Wyznacz kontury z użyciem cv2.findContours
+Z wykorzystaniem cv2.minAreaRect wskaż minimalny prostokąt opisany na figurze
+Dokonaj rotacji obrazu dzięki cv2.getRotationMatrix2D
+(aplikacja transformacji z użyciem cv2.warpAffine)
+Jeżeli centroid czarnego obszaru jest przesunięty w lewo lub prawo {
+    Obróć obraz dodatkowo o +/- 90 stopni
+}
+
+Przesuń figurę na początek układu współrzędnych
+Dokonaj skalowania figury do ustalonych rozmiarów 300px x 200px
+
+Jeżeli liczba białych pikseli do góry obrazu jest większa od tych na dole {
+    Oznacza to że podstawa jest do góry
+    Dokonaj rotacji o 180 stopni aby znalazła się na dole
+}
+\end{verbatim}
+
+Drugą z operacji jest liczenie charakterystyki udziału pikseli:
+\begin{verbatim}
+Podziel przeskalowany już obraz na kolumny o szerokości 1px
+Dla każdej z kolumn oblicz ile pikseli ma niezerową wartość
+Wynik zapisz na odpowiedniej pozycji w liście charakterystyki obrazu
+\end{verbatim}
+
+\section{Charakterystyki}
+Jak wskazano w rozdziale \ref{section:wstep}, system pozwala na wykorzystanie wielu miar podobieństw pomiędzy obrazami. Przygotowane implementacje zostaną zaprezentowane w ramach podrozdziałów.
+
+\subsection{Random}
+Pierwsza z charakterystyk polegająca na określeniu w sposób pseudolosowy podobieństw pomiędzy obrazami. Nie wykorzystuje w ogóle informacji o obrazach. Powstała do testowania formatu wejścia/wyjścia, ale w ostatecznej wersji projektu nie jest wykorzystywana (waga $0.0$).
+
+\subsection{Liczba wierzchołków}
+W podobieństwie tym wykorzystuje się liczbę wierzchołków dla obu obrazów. Kontur wyznaczony w fazie preprocessingu (rozdział \ref{section:preprocessing}) jest wyznaczany z określoną czułością $\epsilon$.
+
+Podobieństwo opisuje się wzorem:
+\begin{equation*}
+    1 - \frac{|v_1 - v_2|}{\frac{1}{2} \cdot (v_1 + v_2)},
+\end{equation*}
+
+gdzie $v_1$ i $v_2$ to liczby wierzchołków w dwóch obrazach.
+
+\subsection{Wariancja udziału koloru białego}
+\label{subsection:wariancja-koloru-bialego}
+Bazując na wyznaczonych w fazie preprocessingu charakterystykach udziału koloru białego (lista z licznością pikseli w kolumnie) obliczana jest wariancja sumy tych list dla dwóch obrazów. W przypadku drugiego z obrazów, lista jest odwrotnej kolejności. Idea stojąca za metodą jest stosunkowo prosta: w przypadku pasujących do siebie obrazów, wariancja powinna być nieznaczna. Ma to miejsce, kiedy praktycznie każda z pozycji nowou tworzonej listy ma prawie taką samą wartość.
+
+Zastosowano wzór:
+\begin{equation*}
+    \frac{x}{D^2(w_1 + w_2')},
+\end{equation*}
+
+gdzie $x$ to szerokość obrazu, $w_1$ i $w_2$ to wysokości białych poziomych pasków, a $D^2$ oznacza wariancję z próby. 
+
+Takie użycie priorytetuje niską wariancję, a wraz z jej wzrostem maleje wartość podobieństwa.
+
+\subsection{Korelacja udziału koloru białego}
+Podobnie jak dla wariancji udziału białego koloru, również w przypadku koleracji bazujemy na wyznaczonej charakterystyce. Tym razem jednakże zastosowano współczynnik korelacji Pearsona.
+Dla jednego z obrazów charakterystyka jest dodatkowo podawana w odwrotnej kolejności. Z wyliczonych korelacji wyznacza się wartość bezwzględną i wybiera największą wartość.
+
+\begin{equation*}
+\max(|\rho(w_1, w_2)|, |\rho(w_1, w_2')|)
+\end{equation*}
+
+\section{Parametry i wagi cech}
+Parametry wstępnego przetwarzania i wagi cech dobrano eksperymentalnie, sprawdzając wyniki na zbiorze testowym.
+Użyte ostatecznie wartości to:
+
+\begin{itemize}
+    \item znormalizowana szerokość: 300,
+    \item znormalizowana wysokość: 200,
+    \item czułość przybliżenia konturu wielokątem: 6,
+    \item wysokość marginesu do wykrywania podstawy: 19,
+    \item próg względnego oddalenia centroidu czarnego obszaru od środka: 0.25
+\end{itemize}
+
+Wagi cech ustawiono następująco:
+
+\begin{itemize}
+    \item wariancja koloru białego: 42\%
+    \item liczba wierzchołków: 33\%
+    \item korelacja koloru białego: 25\%
+\end{itemize}
+
+\section{Wyniki na zbiorach testowych}
+
+Według przyjętej miary oceny, program uzyskał średnio 79,4\% punktów na zbiorach testowych. Łączny czas działania to 13 sekund. Szczegóły przedstawia tabela \ref{table:score}.
+
+\begin{table}
+\centering\begin{tabular}{|r|rrrrr|r|}
+\hline
+zbiór & \#1 & \#2 & \#3 & \#4 & \#5 & wynik \\ \hline
+set0  & 6   & 0  & 0 & 0  & 0 & 100.0\% \\
+set1  & 20  & 0  & 0 & 0  & 0 & 100.0\% \\
+set2  & 20  & 0  & 0 & 0  & 0 & 100.0\% \\
+set3  & 20  & 0  & 0 & 0  & 0 & 100.0\% \\
+set4  & 20  & 0  & 0 & 0  & 0 & 100.0\% \\
+set5  & 182 & 4  & 2 & 3  & 1 & 91.0\%  \\
+set6  & 162 & 1  & 2 & 1  & 2 & 81.0\%  \\
+set7  & 11  & 4  & 3 & 1  & 0 & 55.0\%  \\
+set8  & 40  & 10 & 2 & 6  & 6 & 40.0\%  \\\hline
+razem & 481 & 19 & 9 & 11 & 9 & 79.4\% \\
+\hline
+\end{tabular}
+\caption{Wyniki na zbiorach testowych}\label{table:score}
+\end{table}
+
+\end{document}

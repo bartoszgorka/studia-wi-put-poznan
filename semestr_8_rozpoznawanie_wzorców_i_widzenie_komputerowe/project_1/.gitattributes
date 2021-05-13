@@ -1,0 +1,6 @@
+data export-ignore  
+.gitattributes export-ignore  
+.gitignore export-ignore
+release.sh export-ignore
+check.py export-ignore
+raport export-ignore
