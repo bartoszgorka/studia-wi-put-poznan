@@ -1,0 +1,9 @@
+struct
+{
+   int c;
+   union
+   {
+     char a;
+     int ca;
+   } a;
+}j;

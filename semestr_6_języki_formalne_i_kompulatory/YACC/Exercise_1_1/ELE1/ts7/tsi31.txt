@@ -1,0 +1,7 @@
+char *h;
+int funb(char *a, int a, char b[])
+{
+  int a, *b;
+  char c;
+}
+int a[1];

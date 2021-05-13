@@ -1,0 +1,2 @@
+funb stack size: 17
+Global data size: 8

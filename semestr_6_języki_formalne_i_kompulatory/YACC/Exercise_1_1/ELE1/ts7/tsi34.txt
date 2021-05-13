@@ -1,0 +1,14 @@
+char *h;
+int funb(char *a, int a, char b[], double **gh[][])
+{
+  int a, *b;
+  char c;
+}
+int a[1];
+int funa(char *a, int a, char b[], double **gh[][])
+{
+  int *a;
+  double b;
+  char c;
+}
+double b;

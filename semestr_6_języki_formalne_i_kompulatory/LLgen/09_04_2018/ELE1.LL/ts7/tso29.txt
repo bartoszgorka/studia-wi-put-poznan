@@ -1,0 +1,2 @@
+funa stack size: 8
+Global data size: 4

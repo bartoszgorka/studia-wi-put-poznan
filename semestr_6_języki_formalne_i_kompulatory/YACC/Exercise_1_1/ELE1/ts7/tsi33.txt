@@ -1,0 +1,11 @@
+char *h;
+int funb(char *a, int a)
+{
+  int test(int a)
+  {
+    int a;
+  }
+  int a, *b;
+  char c;
+}
+int a[1];

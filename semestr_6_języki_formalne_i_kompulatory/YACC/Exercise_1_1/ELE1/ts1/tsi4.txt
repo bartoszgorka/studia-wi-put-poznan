@@ -1,0 +1,2 @@
+int a;    float b;    float c; char __a;
+double _g_;

@@ -1,0 +1,4 @@
+int funa(char *a, int a)
+{
+}
+int c;

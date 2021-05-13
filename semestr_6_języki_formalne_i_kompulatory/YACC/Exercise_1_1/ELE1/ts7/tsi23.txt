@@ -1,0 +1,9 @@
+struct
+{
+  char a;
+  int c;
+  struct
+  {
+    float f;
+  }k;
+} *a1[40], c;

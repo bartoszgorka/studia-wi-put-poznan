@@ -1,0 +1,13 @@
+struct
+{
+	char e;
+	union
+	{
+		char a[16], b;
+		struct
+		{
+			int a, b;
+			char c;
+		} d;
+	}d;
+} a;

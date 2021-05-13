@@ -1,0 +1,3 @@
+funb stack size: 25
+funa stack size: 29
+Global data size: 16

@@ -1,0 +1,5 @@
+union
+{
+  char a, *b, c[5];
+  char d;
+} a;
