@@ -1,0 +1,185 @@
+Movie: 12 Angry Men
+Sentences: 5
+Tokens: 155
+Stemmed forms (unique): 114
+Words from a dictionary (unique): 85
+People: Boris Kaufman, Reginald Rose, Marshall, Fonda
+Locations:
+Organizations: Begley
+
+Movie: 12 Years a Slave
+Sentences: 31
+Tokens: 1077
+Stemmed forms (unique): 529
+Words from a dictionary (unique): 370
+People: Solomon Northup, Sarah Paulson, After Solomon, John Ridley, Solomon, Paul Dano, Michael Fassbender, Steve McQueen�s, William Ford, Edwin Epps, Bobby Sands
+Locations: Saratoga Springs, Shame, Bobby Sands, Epps
+Organizations:
+
+Movie: 4 Months, 3 Weeks and 2 Days
+Sentences: 9
+Tokens: 179
+Stemmed forms (unique): 128
+Words from a dictionary (unique): 95
+People: Laura Vasiliu, Vlad Ivanov
+Locations:
+Organizations: Lincoln Plaza, IFC Center
+
+Movie: All About Eve
+Sentences: 8
+Tokens: 226
+Stemmed forms (unique): 145
+Words from a dictionary (unique): 105
+People: Anne Baxter, Joseph L. Mankiewicz, Margo Channing
+Locations: New York, Bette Davis
+Organizations: Academy, Mankiewicz�s, Best, Best Supporting Actress
+
+Movie: American Graffiti
+Sentences: 29
+Tokens: 579
+Stemmed forms (unique): 317
+Words from a dictionary (unique): 224
+People: Candles, Curt Henderson, Steve (, Terry, Cindy Williams, John, John Milner, George Lucas, Candy Clark, Laurie, Charlie Martin Smith, Steve Bolander, Curt, Magic Carpet Airlines, Steve 's Chevy, Paul Le Mat, Richard Dreyfuss
+Locations: California
+Organizations: American Graffiti
+
+Movie: Boyhood
+Sentences: 14
+Tokens: 322
+Stemmed forms (unique): 210
+Words from a dictionary (unique): 160
+People: Like Michael Apted, Patricia Arquette, Richard Linklater�s, Lorelei Linklater, Ethan Hawke, Coltrane
+Locations: Mason
+Organizations: Linklater�s
+
+Movie: Casablanca
+Sentences: 11
+Tokens: 307
+Stemmed forms (unique): 209
+Words from a dictionary (unique): 147
+People: Arthur Edeson, Michael Curtiz�s, Ingrid Bergman, Claude Rains, Michael Curtiz
+Locations: Hollywood, WW2-era, Essex, Paris
+Organizations: Warner
+
+Movie: Citizen Kane
+Sentences: 6
+Tokens: 253
+Stemmed forms (unique): 166
+Words from a dictionary (unique): 119
+People: William Randolph Hearst, Gregg Toland
+Locations:
+Organizations: American Film Institute, AMC
+
+Movie: Gone with the Wind
+Sentences: 6
+Tokens: 210
+Stemmed forms (unique): 148
+Words from a dictionary (unique): 109
+People: Rhett Butler
+Locations: Hollywood
+Organizations: New Line
+
+Movie: Hoop Dreams
+Sentences: 65
+Tokens: 1404
+Stemmed forms (unique): 508
+Words from a dictionary (unique): 382
+People: Arthur Agee, Peter Gilbert, Arthur, Isiah Thomas, William and Arthur, William Gates, William, Jordan, Gene Pingatore, Frederick Marx, Steve James
+Locations: South Side, Westchester, Chicago
+Organizations: High School, PBS, NBA
+
+Movie: Manchester by the Sea
+Sentences: 28
+Tokens: 631
+Stemmed forms (unique): 331
+Words from a dictionary (unique): 240
+People: But, Joe, Kenneth, Patrick, Lucas Hedges, Hedges, Michelle Williams, Kyle Chandler, Casey Affleck, Lonergan, Lee
+Locations: Manchester�s, Manchester, Boston
+Organizations:
+
+Movie: Moonlight
+Sentences: 12
+Tokens: 358
+Stemmed forms (unique): 224
+Words from a dictionary (unique): 165
+People: Because Jenkins, Trevante Rhodes, Wong Kar-wai, Pedro Almod�var, Collectively, Harris, Paula, Alex Hibbert, Jenkins, Kevin, Chiron, Naomie Harris, Richard Linklater�s, Juan
+Locations: Paula�s
+Organizations:
+
+Movie: My Left Foot
+Sentences: 9
+Tokens: 196
+Stemmed forms (unique): 121
+Words from a dictionary (unique): 94
+People: Daniel Day-Lewis, Brenda Fricker, Brown, Christy Brown, Ray McAnally
+Locations:
+Organizations:
+
+Movie: Pan's Labyrinth
+Sentences: 25
+Tokens: 746
+Stemmed forms (unique): 408
+Words from a dictionary (unique): 280
+People: Javier Navarrete�s, Guillermo Navarro, Carmen, Doug Jones, Ivana Baquero
+Locations: Spain
+Organizations: Lord, Pan
+
+Movie: Psycho
+Sentences: 24
+Tokens: 619
+Stemmed forms (unique): 320
+Words from a dictionary (unique): 232
+People: Perkins, Hitchcock, Vera Miles, Martin Balsam, Bernard Herrmann, Joseph Stefano, Robert Clatworthy, Jack Harrison, Alfred Hitchcock, John Gavin, John L. Russell, Robert Block, Joseph Burly, Simon Oakland, George Milo, John McIntire, Anthony Perkins
+Locations: New York, Hollywood, 40,000, Phoenix, Paramount, Arizona
+Organizations: The, Hitchcock
+
+Movie: Ran
+Sentences: 11
+Tokens: 352
+Stemmed forms (unique): 217
+Words from a dictionary (unique): 149
+People:
+Locations: Hollywood, Mount Fuji, Japan
+Organizations:
+
+Movie: Singin' in the Rain
+Sentences: 3
+Tokens: 128
+Stemmed forms (unique): 87
+Words from a dictionary (unique): 58
+People: Lucky Star, Reynolds
+Locations: Hollywood, Kelly
+Organizations:
+
+Movie: Some Like It Hot
+Sentences: 69
+Tokens: 1320
+Stemmed forms (unique): 520
+Words from a dictionary (unique): 399
+People: George Raft, Brown, Tony Curtis, Curtis, Jack Lemmon, Pat O'Brien, Marilyn, Does Wilder, When Monroe, Marilyn Monroe, Joe E. Brown, Cary Grant, Wilder, Billy Wilder, Harpo, Hitler, Frank Sinatra
+Locations: Chicago, Niagara Falls, Monroe, Florida
+Organizations: Shell Oil
+
+Movie: The Godfather
+Sentences: 34
+Tokens: 712
+Stemmed forms (unique): 384
+Words from a dictionary (unique): 276
+People: Al Pacino, Robert Duvall, Jerry Lewis, Albert S. Ruddy, Gordon Willis, Richard Castellano, John Marley, Arthur Knight, Merry Little, Dustin Hoffman, Richard Conte, Francis Ford Coppola, Sterling Hayden, James Caan, Mario Puzo, Michael Corleone
+Locations: New York City, Hollywood, Sicily, Vegas, Sterling, Needle Park, Las Vegas, New Jersey
+Organizations:
+
+Movie: Three Colors Red
+Sentences: 19
+Tokens: 486
+Stemmed forms (unique): 278
+Words from a dictionary (unique): 213
+People: Kieslowski
+Locations:
+Organizations:
+
+---------OVERALL STATISTICS----------
+Verbs: 15.67%
+Nouns: 28.06%
+Adjectives: 10.44%
+Adverbs: 5.41%
