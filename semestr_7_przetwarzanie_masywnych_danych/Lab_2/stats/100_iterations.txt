@@ -1,0 +1,717 @@
+Iteration 0
+Terrorist * day = 2457
+Unique terrorist count = 3622
+Histogram stats
+	1: 494885.0
+	2: 2436.0
+	3: 7.0
+Iteration 1
+Terrorist * day = 2419
+Unique terrorist count = 3602
+Histogram stats
+	1: 489311.0
+	2: 2404.0
+	3: 5.0
+Iteration 2
+Terrorist * day = 2462
+Unique terrorist count = 3602
+Histogram stats
+	1: 493368.0
+	2: 2423.0
+	3: 13.0
+Iteration 3
+Terrorist * day = 2462
+Unique terrorist count = 3608
+Histogram stats
+	1: 496971.0
+	2: 2447.0
+	3: 5.0
+Iteration 4
+Terrorist * day = 2520
+Unique terrorist count = 3686
+Histogram stats
+	1: 498110.0
+	2: 2505.0
+	3: 5.0
+Iteration 5
+Terrorist * day = 2494
+Unique terrorist count = 3628
+Histogram stats
+	1: 493001.0
+	2: 2464.0
+	3: 10.0
+Iteration 6
+Terrorist * day = 2491
+Unique terrorist count = 3633
+Histogram stats
+	1: 495899.0
+	2: 2467.0
+	3: 8.0
+Iteration 7
+Terrorist * day = 2426
+Unique terrorist count = 3560
+Histogram stats
+	1: 496350.0
+	2: 2405.0
+	3: 7.0
+Iteration 8
+Terrorist * day = 2392
+Unique terrorist count = 3563
+Histogram stats
+	1: 497314.0
+	2: 2371.0
+	3: 7.0
+Iteration 9
+Terrorist * day = 2433
+Unique terrorist count = 3559
+Histogram stats
+	1: 491989.0
+	2: 2412.0
+	3: 7.0
+Iteration 10
+Terrorist * day = 2496
+Unique terrorist count = 3653
+Histogram stats
+	1: 499184.0
+	2: 2460.0
+	3: 12.0
+Iteration 11
+Terrorist * day = 2549
+Unique terrorist count = 3631
+Histogram stats
+	1: 495443.0
+	2: 2519.0
+	3: 10.0
+Iteration 12
+Terrorist * day = 2386
+Unique terrorist count = 3567
+Histogram stats
+	1: 491075.0
+	2: 2362.0
+	3: 8.0
+Iteration 13
+Terrorist * day = 2380
+Unique terrorist count = 3590
+Histogram stats
+	1: 494460.0
+	2: 2374.0
+	3: 2.0
+Iteration 14
+Terrorist * day = 2387
+Unique terrorist count = 3526
+Histogram stats
+	1: 490203.0
+	2: 2369.0
+	3: 6.0
+Iteration 15
+Terrorist * day = 2548
+Unique terrorist count = 3715
+Histogram stats
+	1: 493353.0
+	2: 2533.0
+	3: 5.0
+Iteration 16
+Terrorist * day = 2531
+Unique terrorist count = 3710
+Histogram stats
+	1: 497706.0
+	2: 2510.0
+	3: 7.0
+Iteration 17
+Terrorist * day = 2413
+Unique terrorist count = 3557
+Histogram stats
+	1: 493177.0
+	2: 2395.0
+	3: 6.0
+Iteration 18
+Terrorist * day = 2434
+Unique terrorist count = 3577
+Histogram stats
+	1: 491492.0
+	2: 2401.0
+	3: 11.0
+Iteration 19
+Terrorist * day = 2485
+Unique terrorist count = 3625
+Histogram stats
+	1: 495444.0
+	2: 2458.0
+	3: 9.0
+Iteration 20
+Terrorist * day = 2422
+Unique terrorist count = 3583
+Histogram stats
+	1: 497006.0
+	2: 2398.0
+	3: 8.0
+Iteration 21
+Terrorist * day = 2540
+Unique terrorist count = 3722
+Histogram stats
+	1: 497333.0
+	2: 2513.0
+	3: 9.0
+Iteration 22
+Terrorist * day = 2394
+Unique terrorist count = 3550
+Histogram stats
+	1: 494438.0
+	2: 2367.0
+	3: 9.0
+Iteration 23
+Terrorist * day = 2451
+Unique terrorist count = 3589
+Histogram stats
+	1: 497210.0
+	2: 2421.0
+	3: 10.0
+Iteration 24
+Terrorist * day = 2523
+Unique terrorist count = 3693
+Histogram stats
+	1: 495133.0
+	2: 2499.0
+	3: 8.0
+Iteration 25
+Terrorist * day = 2606
+Unique terrorist count = 3768
+Histogram stats
+	1: 498155.0
+	2: 2588.0
+	3: 6.0
+Iteration 26
+Terrorist * day = 2569
+Unique terrorist count = 3740
+Histogram stats
+	1: 500294.0
+	2: 2542.0
+	3: 9.0
+Iteration 27
+Terrorist * day = 2443
+Unique terrorist count = 3583
+Histogram stats
+	1: 493307.0
+	2: 2410.0
+	3: 11.0
+Iteration 28
+Terrorist * day = 2403
+Unique terrorist count = 3581
+Histogram stats
+	1: 496068.0
+	2: 2388.0
+	3: 5.0
+Iteration 29
+Terrorist * day = 2582
+Unique terrorist count = 3778
+Histogram stats
+	1: 501538.0
+	2: 2552.0
+	3: 10.0
+Iteration 30
+Terrorist * day = 2594
+Unique terrorist count = 3748
+Histogram stats
+	1: 497141.0
+	2: 2564.0
+	3: 10.0
+Iteration 31
+Terrorist * day = 2495
+Unique terrorist count = 3654
+Histogram stats
+	1: 495742.0
+	2: 2459.0
+	3: 12.0
+Iteration 32
+Terrorist * day = 2428
+Unique terrorist count = 3587
+Histogram stats
+	1: 490285.0
+	2: 2380.0
+	3: 16.0
+Iteration 33
+Terrorist * day = 2448
+Unique terrorist count = 3590
+Histogram stats
+	1: 493468.0
+	2: 2418.0
+	3: 10.0
+Iteration 34
+Terrorist * day = 2392
+Unique terrorist count = 3565
+Histogram stats
+	1: 490845.0
+	2: 2377.0
+	3: 5.0
+Iteration 35
+Terrorist * day = 2538
+Unique terrorist count = 3690
+Histogram stats
+	1: 490577.0
+	2: 2508.0
+	3: 10.0
+Iteration 36
+Terrorist * day = 2434
+Unique terrorist count = 3582
+Histogram stats
+	1: 497866.0
+	2: 2410.0
+	3: 8.0
+Iteration 37
+Terrorist * day = 2554
+Unique terrorist count = 3710
+Histogram stats
+	1: 498592.0
+	2: 2530.0
+	3: 8.0
+Iteration 38
+Terrorist * day = 2443
+Unique terrorist count = 3580
+Histogram stats
+	1: 494781.0
+	2: 2416.0
+	3: 9.0
+Iteration 39
+Terrorist * day = 2504
+Unique terrorist count = 3642
+Histogram stats
+	1: 498263.0
+	2: 2483.0
+	3: 7.0
+Iteration 40
+Terrorist * day = 2511
+Unique terrorist count = 3692
+Histogram stats
+	1: 494191.0
+	2: 2493.0
+	3: 6.0
+Iteration 41
+Terrorist * day = 2495
+Unique terrorist count = 3624
+Histogram stats
+	1: 493286.0
+	2: 2459.0
+	3: 12.0
+Iteration 42
+Terrorist * day = 2451
+Unique terrorist count = 3616
+Histogram stats
+	1: 495320.0
+	2: 2430.0
+	3: 7.0
+Iteration 43
+Terrorist * day = 2527
+Unique terrorist count = 3608
+Histogram stats
+	1: 493502.0
+	2: 2497.0
+	3: 10.0
+Iteration 44
+Terrorist * day = 2517
+Unique terrorist count = 3690
+Histogram stats
+	1: 492679.0
+	2: 2499.0
+	3: 6.0
+Iteration 45
+Terrorist * day = 2419
+Unique terrorist count = 3591
+Histogram stats
+	1: 495876.0
+	2: 2404.0
+	3: 5.0
+Iteration 46
+Terrorist * day = 2432
+Unique terrorist count = 3614
+Histogram stats
+	1: 493409.0
+	2: 2420.0
+	3: 4.0
+Iteration 47
+Terrorist * day = 2386
+Unique terrorist count = 3565
+Histogram stats
+	1: 494765.0
+	2: 2368.0
+	3: 6.0
+Iteration 48
+Terrorist * day = 2494
+Unique terrorist count = 3604
+Histogram stats
+	1: 496557.0
+	2: 2473.0
+	3: 7.0
+Iteration 49
+Terrorist * day = 2515
+Unique terrorist count = 3712
+Histogram stats
+	1: 499634.0
+	2: 2500.0
+	3: 5.0
+Iteration 50
+Terrorist * day = 2428
+Unique terrorist count = 3584
+Histogram stats
+	1: 494260.0
+	2: 2410.0
+	3: 6.0
+Iteration 51
+Terrorist * day = 2517
+Unique terrorist count = 3649
+Histogram stats
+	1: 499494.0
+	2: 2487.0
+	3: 10.0
+Iteration 52
+Terrorist * day = 2508
+Unique terrorist count = 3697
+Histogram stats
+	1: 497873.0
+	2: 2487.0
+	3: 7.0
+Iteration 53
+Terrorist * day = 2505
+Unique terrorist count = 3704
+Histogram stats
+	1: 496556.0
+	2: 2493.0
+	3: 4.0
+Iteration 54
+Terrorist * day = 2407
+Unique terrorist count = 3563
+Histogram stats
+	1: 491744.0
+	2: 2374.0
+	3: 11.0
+Iteration 55
+Terrorist * day = 2353
+Unique terrorist count = 3483
+Histogram stats
+	1: 496938.0
+	2: 2323.0
+	3: 10.0
+Iteration 56
+Terrorist * day = 2513
+Unique terrorist count = 3613
+Histogram stats
+	1: 489409.0
+	2: 2474.0
+	3: 13.0
+Iteration 57
+Terrorist * day = 2571
+Unique terrorist count = 3747
+Histogram stats
+	1: 498720.0
+	2: 2547.0
+	3: 8.0
+Iteration 58
+Terrorist * day = 2506
+Unique terrorist count = 3641
+Histogram stats
+	1: 498939.0
+	2: 2470.0
+	3: 12.0
+Iteration 59
+Terrorist * day = 2535
+Unique terrorist count = 3644
+Histogram stats
+	1: 493842.0
+	2: 2496.0
+	3: 13.0
+Iteration 60
+Terrorist * day = 2471
+Unique terrorist count = 3617
+Histogram stats
+	1: 492225.0
+	2: 2450.0
+	3: 7.0
+Iteration 61
+Terrorist * day = 2511
+Unique terrorist count = 3660
+Histogram stats
+	1: 494096.0
+	2: 2481.0
+	3: 10.0
+Iteration 62
+Terrorist * day = 2388
+Unique terrorist count = 3533
+Histogram stats
+	1: 491033.0
+	2: 2367.0
+	3: 7.0
+Iteration 63
+Terrorist * day = 2572
+Unique terrorist count = 3746
+Histogram stats
+	1: 500388.0
+	2: 2551.0
+	3: 7.0
+Iteration 64
+Terrorist * day = 2565
+Unique terrorist count = 3748
+Histogram stats
+	1: 495912.0
+	2: 2538.0
+	3: 9.0
+Iteration 65
+Terrorist * day = 2460
+Unique terrorist count = 3645
+Histogram stats
+	1: 499736.0
+	2: 2436.0
+	3: 8.0
+Iteration 66
+Terrorist * day = 2368
+Unique terrorist count = 3530
+Histogram stats
+	1: 494241.0
+	2: 2350.0
+	3: 6.0
+Iteration 67
+Terrorist * day = 2515
+Unique terrorist count = 3693
+Histogram stats
+	1: 500043.0
+	2: 2485.0
+	3: 10.0
+Iteration 68
+Terrorist * day = 2522
+Unique terrorist count = 3692
+Histogram stats
+	1: 496620.0
+	2: 2504.0
+	3: 6.0
+Iteration 69
+Terrorist * day = 2451
+Unique terrorist count = 3595
+Histogram stats
+	1: 495296.0
+	2: 2421.0
+	3: 10.0
+Iteration 70
+Terrorist * day = 2489
+Unique terrorist count = 3624
+Histogram stats
+	1: 495405.0
+	2: 2468.0
+	3: 7.0
+Iteration 71
+Terrorist * day = 2453
+Unique terrorist count = 3640
+Histogram stats
+	1: 494286.0
+	2: 2441.0
+	3: 4.0
+Iteration 72
+Terrorist * day = 2464
+Unique terrorist count = 3655
+Histogram stats
+	1: 492574.0
+	2: 2443.0
+	3: 7.0
+Iteration 73
+Terrorist * day = 2464
+Unique terrorist count = 3622
+Histogram stats
+	1: 493487.0
+	2: 2428.0
+	3: 12.0
+Iteration 74
+Terrorist * day = 2489
+Unique terrorist count = 3693
+Histogram stats
+	1: 494428.0
+	2: 2465.0
+	3: 8.0
+Iteration 75
+Terrorist * day = 2407
+Unique terrorist count = 3567
+Histogram stats
+	1: 492541.0
+	2: 2398.0
+	3: 3.0
+Iteration 76
+Terrorist * day = 2455
+Unique terrorist count = 3625
+Histogram stats
+	1: 495555.0
+	2: 2419.0
+	3: 12.0
+Iteration 77
+Terrorist * day = 2560
+Unique terrorist count = 3721
+Histogram stats
+	1: 492889.0
+	2: 2536.0
+	3: 8.0
+Iteration 78
+Terrorist * day = 2530
+Unique terrorist count = 3709
+Histogram stats
+	1: 497504.0
+	2: 2506.0
+	3: 8.0
+Iteration 79
+Terrorist * day = 2548
+Unique terrorist count = 3701
+Histogram stats
+	1: 497493.0
+	2: 2527.0
+	3: 7.0
+Iteration 80
+Terrorist * day = 2448
+Unique terrorist count = 3605
+Histogram stats
+	1: 493440.0
+	2: 2418.0
+	3: 10.0
+Iteration 81
+Terrorist * day = 2554
+Unique terrorist count = 3670
+Histogram stats
+	1: 500501.0
+	2: 2521.0
+	3: 11.0
+Iteration 82
+Terrorist * day = 2371
+Unique terrorist count = 3513
+Histogram stats
+	1: 491126.0
+	2: 2350.0
+	3: 7.0
+Iteration 83
+Terrorist * day = 2530
+Unique terrorist count = 3749
+Histogram stats
+	1: 496791.0
+	2: 2524.0
+	3: 2.0
+Iteration 84
+Terrorist * day = 2437
+Unique terrorist count = 3616
+Histogram stats
+	1: 495786.0
+	2: 2419.0
+	3: 6.0
+Iteration 85
+Terrorist * day = 2404
+Unique terrorist count = 3641
+Histogram stats
+	1: 491223.0
+	2: 2392.0
+	3: 4.0
+Iteration 86
+Terrorist * day = 2464
+Unique terrorist count = 3589
+Histogram stats
+	1: 488447.0
+	2: 2440.0
+	3: 8.0
+Iteration 87
+Terrorist * day = 2440
+Unique terrorist count = 3633
+Histogram stats
+	1: 493564.0
+	2: 2413.0
+	3: 9.0
+Iteration 88
+Terrorist * day = 2550
+Unique terrorist count = 3741
+Histogram stats
+	1: 496105.0
+	2: 2526.0
+	3: 8.0
+Iteration 89
+Terrorist * day = 2420
+Unique terrorist count = 3526
+Histogram stats
+	1: 492223.0
+	2: 2387.0
+	3: 11.0
+Iteration 90
+Terrorist * day = 2452
+Unique terrorist count = 3594
+Histogram stats
+	1: 491423.0
+	2: 2428.0
+	3: 8.0
+Iteration 91
+Terrorist * day = 2549
+Unique terrorist count = 3719
+Histogram stats
+	1: 500833.0
+	2: 2531.0
+	3: 6.0
+Iteration 92
+Terrorist * day = 2455
+Unique terrorist count = 3630
+Histogram stats
+	1: 491705.0
+	2: 2437.0
+	3: 6.0
+Iteration 93
+Terrorist * day = 2515
+Unique terrorist count = 3713
+Histogram stats
+	1: 490751.0
+	2: 2479.0
+	3: 12.0
+Iteration 94
+Terrorist * day = 2486
+Unique terrorist count = 3672
+Histogram stats
+	1: 493701.0
+	2: 2465.0
+	3: 7.0
+Iteration 95
+Terrorist * day = 2425
+Unique terrorist count = 3547
+Histogram stats
+	1: 493550.0
+	2: 2392.0
+	3: 11.0
+Iteration 96
+Terrorist * day = 2549
+Unique terrorist count = 3742
+Histogram stats
+	1: 496980.0
+	2: 2528.0
+	3: 7.0
+Iteration 97
+Terrorist * day = 2462
+Unique terrorist count = 3593
+Histogram stats
+	1: 493605.0
+	2: 2441.0
+	3: 7.0
+Iteration 98
+Terrorist * day = 2538
+Unique terrorist count = 3694
+Histogram stats
+	1: 496444.0
+	2: 2508.0
+	3: 10.0
+Iteration 99
+Terrorist * day = 2497
+Unique terrorist count = 3683
+Histogram stats
+	1: 493101.0
+	2: 2467.0
+	3: 10.0
+
+Terrorist * day
+	MIN: 2353
+	AVERAGE: 2477.46
+	MEDIAN: 2478.0
+	MAX: 2606
+
+Unique terrorist count
+	MIN: 3483
+	AVERAGE: 3636.76
+	MEDIAN: 3626.5
+	MAX: 3778
+
+Histogram stats
+	1: MIN 488447.0 	| AVG 495008.22 	| MEDIAN 494833.0	| MAX 501538.0
+	2: MIN 2323.0 	| AVG 2453.22 	| MEDIAN 2454.0	| MAX 2588.0
+	3: MIN 2.0 	| AVG 8.08 	| MEDIAN 8.0	| MAX 16.0
