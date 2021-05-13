@@ -1,0 +1,8 @@
+.venv
+.vscode
+
+__pycache__
+
+*.pyc
+
+ocr_126901_127205_127228.zip
