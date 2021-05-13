@@ -1,0 +1,285 @@
+%@descr: wzór sprawozdania, raportu lub pracy - nadaje się do przeróbek
+%@author: Maciej Komosiński
+
+\documentclass{article}
+\usepackage{polski} %moze wymagac dokonfigurowania latexa, ale jest lepszy niż standardowy babel'owy [polish]
+\usepackage[utf8]{inputenc}
+\usepackage[OT4]{fontenc}
+\usepackage{graphicx,color} %include pdf's (and png's for raster graphics... avoid raster graphics!)
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage[pdftex,hyperfootnotes=false,pdfborder={0 0 0}]{hyperref} %za wszystkimi pakietami; pdfborder nie wszedzie tak samo zaimplementowane bo specyfikacja nieprecyzyjna; pod miktex'em po prostu nie widac wtedy ramek
+
+
+\input{_ustawienia.tex}
+
+\begin{document}
+
+\input{_tytulowa}
+
+\section{Wstęp}
+Sprawozdanie jest opisem wykonanych badań w ramach studium przypadku przeprowadzonego na potrzeby przedmiotu \texttt{Uczenie Maszynowe}. Zadaniem polegało na znalezieniu zbioru danych do analizy, a następnie zaprezentowaniu wachlarza metod do rozwiązania praktycznego problemu uczenia maszynowego.
+
+Integralną częścią sprawozdania jest plik w formacie \texttt{jupyter notebook} zawierający większość kodu dotyczącego analizy przygotowanej w ramach zadania.
+
+\section{Zbiór danych}
+Autorzy zdecydowali się wykorzystać zbiór danych dotyczący aplikacji dostępnych w sklepie \texttt{Google Play} pochodzący z serwisu \texttt{Kaggle}\cite{KaggleSite}.
+
+Zbiór składa się z dwóch części. Pierwsza dotyczy informacji o poszczególnych aplikacjach. W ramach tej części, każda krotka składa się z 13 atrybutów:
+\begin{itemize}
+\item \textbf{App} (tłum. aplikacja) -- Nazwa aplikacji
+\item \textbf{Category} (tłum. kategoria) -- Jedna z 33 kategorii, do której przynależy aplikacja, przy czym najczęściej występuje klasa `rodzina'
+\item \textbf{Rating} (tłum. ocena) -- Ogólna ocena aplikacji wystawiona przez użytkowników, wartość liczbowa z zakresu [1.0; 5.0]
+\item \textbf{Reviews} (tłum. oceniający) -- Liczba ocen, wystawionych przez użytkowników aplikacji
+\item \textbf{Size} (tłum. rozmiar) -- Rozmiar aplikacji, wielkość konieczna do pobrania przed instalacją
+\item \textbf{Installs} (tłum. instalacje) -- Liczba instalacji na urządzeniach użytkowników
+\item \textbf{Type} (tłum. typ) -- Wskazanie czy aplikacja jest darmowa bądź konieczne jest poniesienie opłaty, aby móc ją zainstalować
+\item \textbf{Price} (tłum. cena) -- Cena aplikacji w dolarach amerykańskich
+\item \textbf{Content Ranking} (tłum. grupa docelowa) -- Docelowa grupa wiekowa, do której skierowana jest aplikacja
+\item \textbf{Genres} (tłum. gatunki) -- Dodatkowe kategorie, do których należy aplikacja (poza główną kategorią)
+\item \textbf{Last Updated} (tłum. data ostatniej modyfikacji) -- Data ostatniej modyfikacji aplikacji
+\item \textbf{Current Ver} (tłum. obecna wersja) -- Aktualna wersja aplikacji
+\item \textbf{Android Ver} (tłum. min. wersja systemu Android) -- Minimalna wersja systemu Android, wymagana do instalacji aplikacji
+\end{itemize}
+
+Ostatecznie w analizie zdecydowano się pominąć atrybuty \texttt{Content Ranking}, \texttt{Genres}, \texttt{Last Updated}, \texttt{Current Ver}, \texttt{Android Ver} oraz \texttt{App}.
+
+W przypadku drugiej części mamy do czynienia z opiniami słownymi i ocena ich wydźwięku (pozytywne, neutralne, negatywne). Wybrany zbiór pozwala na eksperymenty na danych liczbowych, ale również w kontekście przetwarzania języka naturalnego.
+
+Zbiór danych opisuje 9659 aplikacji oraz zawiera 30676 recenzji. Najbardziej liczną z kategorii jest rodzina i gry. Większość aplikacji oceniona została w przybliżeniu 4.17 na 5.0, co może zgadzać się z pozytywnym, sumarycznym wydźwiękiem recenzji.
+
+\subsection{Proces przygotowania danych}
+Wspomniany zbiór danych wykorzystany w zadaniu posiada powielone aplikacji. Jako pierwszy etap przygotowania danych usunięto powtórzenia, aby zachować jedynie unikalne aplikacje, bazując na ich nazwach. Ponadto aplikacja \texttt{Life Made WI-Fi Touchscreen Photo Frame} nie zawierała poprawnie uzupełnionych atrybutów, dlatego również została usunięta.
+
+Dla potrzeb prawidłowego działania algorytmów opisywanych w dalszej części sprawozdania często konieczne było wykonywanie podobnych czynności oczyszczających dane.
+
+Z kolumny dotyczącej liczby instalacji aplikacji usunięto nadmiarowe znaki tj. przecinek oraz plus. Podobną operację zastosowano dla kolumny rozmiaru zastępując \texttt{Varies with device} wartością \texttt{NaN}. Dodatkowo ujednolicono rozmiary prezentując wszystkie jako megabytes (MB). Z kolumny ceny usunięto znak dolara, tworząc ostatecznie 5 atrybutów liczbowych, jakimi są \texttt{liczba instalacji}, \texttt{rozmiar aplikacji}, \texttt{liczba ocen}, \texttt{średnia ocena} oraz \texttt{cena aplikacji}.
+
+\section{Eksploracyjna analiza danych}
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/eda_summary.png}
+    \caption{Relacje pomiędzy atrybutami}
+    \label{fig:eda}
+\end{figure}
+
+Na rysunku \ref{fig:eda} zaprezentowano relacje pomiędzy wybranymi atrybutami. Na szczególną uwagę zasługuje wykres oceny aplikacji w zależności od typu. W przypadku płatnych aplikacji są one częściej słabiej oceniane niż aplikacje darmowe. Również w przypadku rozmiaru możemy zaobserwować wyraźną tendencję -- użytkownicy preferują aplikacje o małym rozmiarze, a wraz ze wzrostem rozmiaru maleje zainteresowanie i liczba instalacji. Informacja ta może zdecydowanie pomóc osobom wprowadzającym aplikację na rynek. Osoby te powinny przypilnować programistów, żeby zwrócili uwagę na rozmiar. Poza tym skuteczniejsze może okazać się stworzenie bezpłatnej aplikacji, która posiada w sobie część funkcji dodatkowo płatnych, np. poprzez wbudowane mikropłatności.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/apps_in_categories.png}
+    \caption{Liczba aplikacji w zależności od kategorii}
+    \label{fig:apps-in-categories}
+\end{figure}
+
+Zagłębiając się w analizę danych, postanowiono sprawdzić jak wygląda kwestia rozkładu liczby aplikacji w poszczególnych kategoriach. Przedstawia to rysunek \ref{fig:apps-in-categories}. Dwie najliczniejsze kategorie to odpowiednio \texttt{rodzina} oraz \texttt{gry}. Zdecydowanie większe zaskoczenie spowodowały kolejne trzy kategorie tj. \texttt{narzędzia}, \texttt{biznes} oraz \texttt{aplikacje medyczne}. Szczególnie kwestia aplikacji poruszających rynek medyczny jest zaskakująca. Informacja o popularności kategorii może z kolei nieść pogląd na konkurencję i popyt na konkretne aplikacje.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/apps_rating.png}
+    \caption{Rozkład ocen aplikacji}
+    \label{fig:apps-rating}
+\end{figure}
+
+Kolejnym krokiem była analiza rozkładu ocen, jakie użytkownicy wystawiają aplikacjom. Zostało to zaprezentowane na rysunku \ref{fig:apps-rating}. Zdecydowana większość aplikacji osiągnęła ocenę ponad 3.0, przy czym średnia ocena aplikacji wyniosła w przybliżeniu 4.17 na maksymalne 5.0.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/categories_ranking.png}
+    \caption{Rozkład ocen dla poszczególnych kategorii}
+    \label{fig:categories-rating}
+\end{figure}
+
+W przypadku analizy rozkładu ocen warto wziąć pod uwagę także kategorie. Wynik takiego podejścia zaprezentowano na rysunku \ref{fig:categories-rating}. Ograniczono zbiór danych do kategorii mających co najmniej 300 aplikacji. Takie podejście pozwoliło na bardziej wiarygodne badanie. Szczególnie w przypadku gier, użytkownicy decydowali się na średnią ocenę w przybliżeniu wynoszącą 4.5, natomiast dla kategorii personalizacji wartości z przedziału [4.0; 5.0] były bardzo zbliżone co do częstości udzielania. Jak zauważamy, w większości kategorii oceny bardzo słabe, czyli 1.0 albo zbliżone nie występują zbyt często. Jeżeli użytkownicy oceniają aplikację, najczęściej czynią to pozytywnie. Takie zachowanie jest mniej popularne w kategorii biznesu, finansów, narzędzi oraz stylu życia, gdzie ich oceny są bardzo surowe. Prawdopodobnie objawia się to faktem, że instalując aplikację, która ma ułatwić jakiś życiowy proces, oczekujemy rzeczywistego usprawnienia i stajemy się bardziej wymagający niż w przypadku gry, którą jeśli nam się nie spodoba możemy po prostu odinstalować.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/rating_vs_size.png}
+    \caption{Rozkład ocen w stosunku do rozmiaru aplikacji}
+    \label{fig:rating-vs-size}
+\end{figure}
+
+Przedostatnią z analiz była kwestia rozkładu ocen w stosunku do rozmiaru aplikacji, który został zaprezentowany na rysunku \ref{fig:rating-vs-size}. Użytkownicy preferują aplikacje o małym rozmiarze (od 2 do 40 MB). W przypadku większego rozmiaru, aplikacje mogą liczyć się z bardziej ostrym traktowaniem i ocenianiem. Może to być zaskakująca informacja, szczególnie przy wzrastających pamięciach telefonów, ale z pewnością cenna z punktu widzenia biznesowego.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/correlation-matrix.png}
+    \caption{Macierz korelacji pomiędzy atrybutami}
+    \label{fig:macierz-korelacji}
+\end{figure}
+
+Ostatnia analiza przeprowadzona w ramach procesu \texttt{EDA} to przygotowanie macierzy korelacji pomiędzy wartościami liczbowymi w danych. Macierz została zaprezentowana na rysunku \ref{fig:macierz-korelacji}. Główna przekątna nie dostarcza nam żadnych informacji (korelacja atrybutu z samym sobą). Możemy zaobserwować dość słabą, jednakże istniejącą zależność pomiędzy liczbą ocen a rozmiarem. Podobna zależność występuje dla liczby instalacji i rozmiaru.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/correlation-installs-reviews.png}
+    \caption{Zależność pomiędzy liczbą instalacji a liczbą ocen aplikacji}
+    \label{fig:reviews-installs}
+\end{figure}
+
+Interesującą zależnością w danych jest bardzo wysoka wartość korelacji pomiędzy liczbą instalacji a liczbą ocen. Takie zjawisko jest całkowicie intuicyjne i oczekiwane. Użytkownicy, którzy zdecydowali się na pobranie aplikacji, często również decydują się ją ocenić. Z rysunku \ref{fig:reviews-installs} możemy dowiedzieć się również, że aplikacje darmowe mają znacząco więcej instalacji oraz również ocen. Jednakże obydwa typy mają zbliżoną do siebie linię trendu. Wykres uświadamia, że warto zachęcać użytkowników do oceniania, ponieważ dopiero wtedy aplikacja staje się chętniej pobierana przez innych. Mobilizuje to z pewnością do tworzenia dobrej jakości oprogramowanie, ponieważ mimo wszystko oceny na tym bazują. Pomysłem na pozytywny rozwój biznesu może być wprowadzenie darmowego okresu próbnego, który zachęci do instalowania i testowania aplikacji, tym samym napędzi wystawianie opinii, które z kolei przydadzą się w późniejszym czasie, gdy darmowy okres się skończy.
+
+\section{Predykcja oceny aplikacji}
+Kolejnym krokiem po procesie \texttt{EDA} było przeprowadzenie predykcji oceny aplikacji (ang. rating) na podstawie parametrów: kategoria, liczba ocen, liczba instalacji, typ aplikacji, jej rozmiar oraz cena. W tym celu przygotowano dane, eliminując aplikacje bez ocen bądź rozmiaru (niektóre aplikacje zawierają wartość \texttt{NaN} w swoich opisach, jak to wskazano już wcześniej). Dodatkowo dokonano zgrupowania wartości atrybutu oceny aplikacji co 0.5. Taki zabieg można uznać za nadużycie, jednakże predykcja z dokładnością do 0.1 nie jest nam przydatna.
+
+Wszystkie porównania wykonane w ramach tej części eksperymentu były przeprowadzone na takim samym zbiorze danych dla wszystkich klasyfikatorów. Każdy z nich był na początku uczony, a następnie testowany. Wykorzystanie spójnego zbioru pozwala na porównanie działania klasyfikatorów. Każdorazowo również dzielono zbiór na dwie części. Pierwsza z nich stanowiła 80\% rozmiaru i była dostępna w procesie uczenia. Pozostałe 20\% to druga część, która została przeznaczona na potrzeby testowania.
+
+\subsection{Dummy Classifier}
+Jako punkt odniesienia postanowiono wykorzystać klasyfikator \texttt{Dummy Classifier}. Nie powinno się go wykorzystać w realnych problemach ze względu na jego zachowanie, czyli wykorzystanie prostych reguł do predykcji klasy, jednakże jest to dobry wzorzec.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/errors-dummy.png}
+    \caption{Macierz pomyłek dla Dummy Classifier}
+    \label{fig:errors-dummy}
+\end{figure}
+
+W przypadku tego klasyfikatora, macierz pomyłek przedstawia znacznie więcej różnorodnych wartości niż jej odpowiedniki dla kolejnych klasyfikatorów (rysunek \ref{fig:errors-dummy}). Niestety wykorzystanie prostych reguł spowodowało popełnianie znacznie częściej błędów i niemożliwość łatwego rozróżnienia nawet dominujących klas decyzyjnych. Z tego powodu także nie powinniśmy używać go w realnych problemach (jedynie jako punkt odniesienia).
+
+\subsection{Regresja logistyczna}
+W przypadku regresji logistycznej mamy do czynienia z parametrem \texttt{C}, który znacząco wpływa na trafność klasyfikacji. Zbyt wysoka wartość może skutkować zbyt dużym dopasowaniem modelu do danych. W ramach strojenia parametrów zastosowano wartości $\in$ \{0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0\}. Ostatecznie w wyniku testów wybrano wartość \texttt{10.0} oraz metodę regularyzacji \texttt{L2}.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/errors-regr.png}
+    \caption{Macierz pomyłek dla Regresji Logistycznej}
+    \label{fig:errors-regresja-logistyczna}
+\end{figure}
+
+Na rysunku \ref{fig:errors-regresja-logistyczna} zaprezentowano macierz pomyłek dla regresji logistycznej. Jak możemy zaobserwować, model nauczył się przewagi ocen, czyli klasyfikacji głównie w ramach klasy 4.5 oraz czasem dla 4.0. Możemy dojść do wniosku, że klasyfikator dopasował się do najbardziej dominującej klasy w zbiorze danych. W zależności od potrzeb może być to wyznacznikiem wyboru klasyfikatora, np. gdy chcemy badać tylko niektóre aplikacje, odbiegające ocenami od innych. W przypadkach niepewnych klasyfikator uznaje je za niczym niewyróżniające się, wrzuca do klasy większościowej. Resztę, co do których jest pewien wyróżni i będzie można je na przykład użyć do badań przez eksperta.
+
+\subsection{kNN}
+Algorytm najbliższego sąsiada posiada parametr \texttt{k} określający liczbę sąsiadów, który wymaga strojenia. W naszym przypadku zdecydowaliśmy się sprawdzić wartości $\in$ \{5, 10, 15, 25, 47, 57, 73, 89, 100\}, aby ostatecznie wybrać wartość \texttt{57}. Zastosowaliśmy metodę prób i błędów do wybierania parametru \texttt{k}. Polega ona na uczeniu klasyfikatora z kilkoma różnymi parametrami i ostatecznie wyboru dającego najlepszą trafność na zbiorze testowym.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/errors-knn.png}
+    \caption{Macierz pomyłek dla kNN}
+    \label{fig:errors-knn}
+\end{figure}
+
+Również dla niego została zaprezentowana macierz pomyłek (rysunek \ref{fig:errors-knn}). W przypadku klasyfikatora \texttt{kNN} mamy do czynienia z lepszym nauczeniem się modelu (w 5 pkt procentowych w stosunku do regresji logistycznej). Potrafił on bardziej rozróżnić zbliżone do siebie klasy ocen 4.0, 4.5 oraz 5.0 popełniając przy tym mniej błędów. Dzięki swojemu zachowaniu polegającemu na porównywaniu sąsiadów i głosowaniu nad przydziałem do klasy możliwe było rozróżnienie trudnych granic pomiędzy zbiorami obiektów należących do różnych klas.
+
+\subsection{SVM}
+Z uwagi na bardzo dobre działanie \texttt{SVM} podczas zajęć laboratoryjnych, zdecydowano się zastosować go również do analizowanego problemu. Wybrano domyślne jądro RBF, dokonując zmiany parametru \texttt{gamma} na \texttt{scale} jako wpływu pojedynczego obiektu podczas procesu uczenia.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/errors-svm.png}
+    \caption{Macierz pomyłek dla SVM}
+    \label{fig:errors-svm}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/errors-svm2.png}
+    \caption{Macierz pomyłek dla SVM po zmianie parametrów}
+    \label{fig:errors-svm2}
+\end{figure}
+
+Klasyfikator zachował się nieoczekiwanie co przedstawiono w postaci macierzy pomyłek na rysunku \ref{fig:errors-svm}. Za każdym razem podejmował decyzję zgodną z klasą większościową. Dopiero po znacznym zwiększeniu wartości parametru \texttt{C} rozkład decyzji uległ zmianie -- pojawiły się także decyzje odnośnie drugiej z dominujących klas czyli wartości 4.0 co zostało zaprezentowane na rysunku \ref{fig:errors-svm2}.
+
+\subsection{Drzewo decyzyjne}
+W przypadku tworzenia drzewa decyzyjnego ważnymi parametrami są kryterium wyboru atrybutu, minimalna liczba przykładów do podziału w węźle oraz minimalna liczba przykładów w liściu. Jako wartość kryterium zdecydowano się (po testach) wybrać \texttt{gini}.  Minimalna liczba przykładów do podziału określa nam, jak długo drzewo może się rozgałęziać, natomiast minimalna liczba przykładów w liściu zapobiega rozgałęzieniu drzewa do liści zawierających tylko jeden przykład. Minimalna liczba przykładów do podziału w węźle została określona jako wartość 2, natomiast jako minimalną liczbę przykładów w liściu uznano 51.
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/errors-tree.png}
+    \caption{Macierz pomyłek dla drzewa decyzyjnego}
+    \label{fig:errors-tree}
+\end{figure}
+
+Macierz pomyłek dla drzewa decyzyjnego przedstawiona na rysunku \ref{fig:errors-tree} pozwala porównać zachowanie klasyfikatora ze wcześniej zaprezentowanymi. Jego wyniki są zbliżone do wyników uzyskanych przez \texttt{kNN}. Klasyfikator stosunkowo dobrze poradził sobie z rozróżnieniem dwóch najliczniejszych klas, uzyskując minimalnie gorszy wynik niż wspomniany \texttt{kNN}.
+
+\subsection{Random Forest}
+Ostatnim z wybranych klasyfikatorów był \texttt{Random Forest}. Technika polega na generowaniu wielu drzew decyzyjnych, aby ostatecznie wyeliminować problem, jakie mają drzewa decyzyjne, czyli ich nadmierne dopasowanie do danych. Ważnymi parametrami klasyfikatora są: ilość drzew (ustawiono `100'), kryterium wyboru atrybutu, maksymalna liczba cech branych pod uwagę w tworzeniu drzewa (`sqrt'), minimalna liczba przykładów do podziału w węźle (`12') oraz minimalna liczba przykładów w liściu (zdecydowano się na wartość `47').
+
+\begin{figure}[!h]
+\centering
+    \includegraphics[width=1.0\textwidth]{pics/errors-forest.png}
+    \caption{Macierz pomyłek dla Random Forest}
+    \label{fig:errors-forest}
+\end{figure}
+
+Na rysunku \ref{fig:errors-forest} zaprezentowano macierz pomyłek dla zespołu klasyfikatorów \texttt{Random Forest}. Nie ustrzegł się on pomyłek, jednakże osiągnął najwyższy wynik ze wszystkich analizowanych klasyfikatorów.
+
+\subsection{Porównanie klasyfikatów}
+W ramach porównania działania klasyfikatorów zbiór danych został podzielony na zbiór uczący i testowy w proporcjach 8:2.
+
+\begin{table}[h!]
+\centering
+\caption{Predykcja -- porównanie klasyfikatorów}
+\label{tab:predykcja-porownanie-klasyfikatorow}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llllll}
+\hline
+\multicolumn{1}{|l|}{\textbf{SVM}} & \multicolumn{1}{l|}{\textbf{kNN}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Logistic\\ Regression\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Decision Tree\\ Classifier\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Random Forest\\ Classifier\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Dummy\\ Classifier\end{tabular}}} \\ \hline
+
+\multicolumn{1}{|l|}{44,59} & \multicolumn{1}{l|}{49,85} & \multicolumn{1}{l|}{44,59} & \multicolumn{1}{l|}{48,22} & \multicolumn{1}{l|}{51,21} & \multicolumn{1}{l|}{31,74} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+Najwyższą trafność udało się osiągnąć korzystając z klasyfikatora \texttt{Random Forest}. Tworzy on losowe podzbiory cech i buduje na ich podstawie mniejsze drzewa, następnie łącząc wyniki. Z tego powodu zachowuje się lepiej niż drzewo decyzyjne. Trafność nieco poniżej 50\% osiągnął \texttt{kNN}. W przypadku \texttt{SVM} osiągnięto 45\%. \texttt{Dummy Classifier}, tak jak się spodziewano, osiągnął najgorszy wynik trafności, co potwierdziło, że nie powinno wykorzystywać się go w praktyce.
+
+Trafność około 50\% może wydawać się niewielka, jednak należy wziąć pod uwagę, że liczba klas decyzyjnych wynosiła 9. Jest to duża liczba, szczególnie w przypadku tak trudnej predykcji ocen użytkownika z dokładnością do 0.5 w skali 1 - 5. Niewiele osób jest w stanie poradzić sobie z przewidywaniami co użytkownik oceni pozytywnie, jeśli byłoby inaczej to mielibyśmy same niesamowicie dobre aplikacje. W trakcie eksperymentów okazało się, że po zmniejszeniu liczby klas decyzyjnych do 5 (konkretniej zaokrąglając oceny do jedności), trafności lepszych z opisywanych klasyfikatorów podskoczyły do okolic 70\%. Podział na 2 klasy, aplikacji ocenianych stosunkowo słabo (ocena < 4.0) i takich, które bardziej podobały się użytkownikom, poprawił skuteczność o niecałe 10 punktów procentowych. Nie udało się jednak osiągnąć skuteczności wyższej niż 80\%, nawet z tylko dwoma klasami decyzyjnymi, co może być znakiem naprawdę trudnego tematu rozpoznania emocji konsumentów.
+
+\section{Przetwarzanie języka naturalnego - recenzje}
+W ramach zapoznania się z tematyką przetwarzania języka naturalnego zaimplementowano i porównano kilka metod predykcji sentymentu recenzji aplikacji na podstawie słów występujących w tekście.
+
+\subsection{Uwagi wstępne}
+Zbiór recenzji aplikacji podzielono losowo na 2 podzbiory, 80\% przeznaczono na zbiór uczący, natomiast 20\% stanowił zbiór testowy.
+
+Analizując działanie każdego z zaimplementowanych rozwiązań zauważono, że dużą rolę odgrywa odpowiednie przygotowanie cech. Klasyfikatory nie różniły się znacząco między sobą dla tej samej liczby cech (najczęściej występujących i jednocześnie najbardziej znaczących dla wyrażenia sentymentu słów) i tego samego preprocessingu, jednak przy każdorazowym ich powiększaniu (do okolic 1000 lub więcej) trafność mocno wzrastała. Ostatecznie zdecydowano się zaprzestać na analizie 1000 cech ze względu na wystarczającą jakość predykcji i spowalnianie obliczeń przy jednoczesnym niewielkim wzroście trafności przy zwiększaniu ich liczby.
+
+W celu ekstrakcji cech z recenzji użyto dwóch podejść: wykorzystując \texttt{CountVectorizer} i \texttt{TfidfVectorizer}. Różni ich traktowanie słów często powtarzających się. \texttt{TfidVectorizer} zmniejsza wpływ słów częstych na przydział do klasy, zakładając, że wnoszą one mniej informacji niż tokeny powtarzające się rzadko.
+
+\subsection{Porównanie klasyfikatorów}
+
+\begin{table}[]
+\centering
+\caption{Porównanie trafności klasyfikatorów dla NLP}
+\label{tab:nlp-porwnanie}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllll}
+\hline
+\multicolumn{1}{|l||}{\textbf{}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Random\\ Forest\end{tabular}}} & \multicolumn{1}{l|}{\textbf{SGD}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Logistic\\ Regression\end{tabular}}} & \multicolumn{1}{l|}{\textbf{SVM}} \\ \hline
+\multicolumn{1}{|l||}{Count Vectorizer} & \multicolumn{1}{l|}{ 91,29} & \multicolumn{1}{l|}{89,39} & \multicolumn{1}{l|}{90,31} & \multicolumn{1}{l|}{90,34} \\ \hline
+\multicolumn{1}{|l||}{Tfid Vectorizer} & \multicolumn{1}{l|}{90,99} & \multicolumn{1}{l|}{74,47} & \multicolumn{1}{l|}{89,13} & \multicolumn{1}{l|}{89,71} \\ \hline
+\end{tabular}%
+}
+\end{table}
+
+W tabeli \ref{tab:nlp-porwnanie} nie zawarto wyników różnych odmian naiwnego Bayesa, ponieważ nie sprawdza się mimo jego szybkości. Powodem może być jego naiwne założenie niezależności cech. W przypadku omawianych recenzji prawdopodobnie ich zależność jest istotna. Trafność klasyfikacji kształtowała się następująco:
+\begin{itemize}
+    \item GaussianNB -- 58,97\%
+    \item MultinomialNB -- 76,44\%
+    \item GaussianNB z Tfid -- 64,94\%
+    \item MultinomialNB z Tfid -- 66,95\%
+\end{itemize}
+
+W przypadku klasyfikatora \texttt{Random Forest} jako parametr ustawia się liczbę drzew. W ogólności im więcej tym lepiej, ale zauważono, że warto ustawiać parametru na więcej niż około 50, ponieważ zwiększa to znacząco czas uczenia przy jednoczesnym niewielkim wzroście trafności. \texttt{Regresja logistyczna} działa dużo szybciej od pozostałych. Osiąga też lepszą trafność. \texttt{SVM} działa dużo wolniej od pozostałych, podczas gdy trafność jest porównywalna do lepszych z opisywanych wcześniej.
+
+Klasyfikator \texttt{SGD}, z zastosowaniem \texttt{Tfid Vectorizer} klasyfikuje dużo więcej przykładów negatywnych jako pozytywne niż odwrotnie. Może mieć to praktyczne znaczenie, gdy chcielibyśmy reagować tylko na negatywne opinie, bez przeglądania pozytywnych. W przypadku pozostałych klasyfikatorów liczba pozytywnych i negatywnych przykładów źle zaklasyfikowanych jest podobnego rzędu.
+
+Czas nauki klasyfikatora \texttt{Random Forest} to około 30--40sekund, \texttt{SGD} jest dwukrotnie mniejszy, \texttt{regresja logistyczna} kończy naukę po około sekundzie, to trochę więcej niż \texttt{Naiwny Bayes}, a do skorzystania z \texttt{SVM} potrzeba aż 20 minut.
+
+\subsection{Cechy ekstrahowane przez klasyfikatory}
+Dla klasyfikatora \texttt{Random Forest} wypisano cechy oraz słowa, które miały największy i najmniejszy wpływ na predykcję. Zaobserwowano, że w głównej mierze o pozytywnym lub negatywnym wydźwięku decydowały słowa takie jak: good, great, love, best, nice, bad, annoying, hate, worst. Najmniej znaczące były słowa nienoszące ze sobą bezpośrednio pozytywnego ani negatywnego wydźwięku, często pojawiające się w dobrym i złym kontekście: cloud, clock, switch, tool, shopping itp. Jest to dość intuicyjna obserwacja, potwierdzająca zgodność działania klasyfikatorów z ``ludzkim'' patrzeniem na problem.
+
+\subsection{Wnioski}
+Wybór klasyfikatora dla problemu oceny wydźwięku recenzji aplikacji w \texttt{Google Play} może być podjęty patrząc na trafność klasyfikacji (w takim wypadku odpada \texttt{Naive Bayes}), czas uczenia (\texttt{SVM} pod tym kątem wypada gorzej od innych), ale również liczba pozytywnych recenzji opisanych jako negatywne i odwrotnie.
+
+\section{Podsumowanie}
+W ramach studium przypadku zrealizowano ogólną eksplorację zbioru danych, pozwalającą na zapoznanie się z informacjami, które przedstawia i zauważeniu pewnych zależności pomiędzy atrybutami. Część ta pozwoliła na wyciągnięcie wniosków pomocnych np. w podejmowaniu biznesowych decyzji przez osoby wprowadzające aplikacje na rynek. Następnie sprawdzono kilka klasyfikatorów do predykcji ocen aplikacji. Zauważono, że każdy z nich zachowuje się inaczej w zależności od ustalonych parametrów i potrzeb. W ostatniej części zastosowano metody przetwarzania języka naturalnego i porównano szereg klasyfikatorów, które rozpoznały sentyment opinii bazując na ważnych i częściej pojawiających się w określonych kontekstach słów.
+
+Średnia ocena aplikacji w sklepie to \textbf{4.17} punktów na 5 możliwych. Użytkownicy preferują aplikacje z ograniczonym rozmiarem (od 2 do 40 MB). Występuje również zależność pomiędzy liczbą pobrań a liczbą ocen aplikacji.
+
+% %%%%%%%%%%%%%%%% literatura %%%%%%%%%%%%%%%%
+\clearpage
+
+\bibliography{sprawozd}
+\bibliographystyle{plainurl}
+
+\end{document}
