@@ -1,0 +1,6 @@
+# PyCharm artifacts
+.idea/
+
+# Own artifacts
+Results/
+Classifier/

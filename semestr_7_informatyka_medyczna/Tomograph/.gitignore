@@ -1,0 +1,5 @@
+# PyCharm artifacts
+.idea/
+
+# Results
+results/
