@@ -1,0 +1,290 @@
+from misio.pacman.game import Directions, Actions
+from misio.pacman.util import CustomCounter, manhattan_distance
+from queue import *
+
+class SimpleExtractor():
+	"""
+	Returns simple features for a basic reflex Pacman:
+	- whether food will be eaten
+	- how far away the next food is
+	- whether a ghost collision is imminent
+	- whether a ghost is one step away
+	"""
+	def __init__(self):
+		self.nodes = []
+		self.maxDistance = 400
+		self.totalFoodCount = 100
+
+	def setData(self, nodes, totalFoodCount):
+		self.nodes = nodes
+		self.totalFoodCount = totalFoodCount
+
+	def getFoodDistance(self, state, action):
+		previousPosition = state.getPacmanState().getPosition()
+		newPosition = state.generateSuccessor(0, action).getPacmanState().getPosition()
+
+		# setup data structures for the search
+		openQueue = Queue()
+		closedSet = set()
+
+		# ensures we 'close of our back' and start searching only in the given direction
+		if action != Directions.STOP:
+
+			closedSet.add(previousPosition)
+
+			root = self.nodes[newPosition[0]][newPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		else:
+			root = self.nodes[previousPosition[0]][previousPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		# start the BF search
+		while not openQueue.empty():
+
+			# pop new node and add it to the closed set
+			currentNode = openQueue.get()
+			closedSet.add(currentNode.position)
+
+			# check for our objective
+			if state.hasFood(currentNode.x, currentNode.y):
+				return currentNode.distance
+
+			for candidateNode in currentNode.neighbors:
+
+				# increment distance for every edge you cross in the node-grid-graph
+				candidateNode.distance = currentNode.distance + 1
+
+				if not candidateNode.position in closedSet:
+					openQueue.put(candidateNode)
+
+
+		# no food was found in this direction
+		return self.maxDistance
+
+	def getGhostDistance(self, state, action):
+		previousPosition = state.getPacmanState().getPosition()
+		newPosition = state.generateSuccessor(0, action).getPacmanState().getPosition()
+
+		# setup data structures for the search
+		openQueue = Queue()
+		closedSet = set()
+
+		if action != Directions.STOP:
+			closedSet.add(previousPosition)
+			root = self.nodes[newPosition[0]][newPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+		else:
+			root = self.nodes[previousPosition[0]][previousPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		while not openQueue.empty():
+
+			# pop new node and add it to the closed set
+			currentNode = openQueue.get()
+			closedSet.add(currentNode.position)
+
+			# check for our objective
+			for ghostPosition in state.getGhostPositions():
+
+				# round ghost positions in case they are inbetween nodes
+				# this happens when they are scared and have reduced movement speed
+				if round(ghostPosition[0]) == currentNode.position[0]:
+					if round(ghostPosition[1]) == currentNode.position[1]:
+						return currentNode.distance
+
+
+			for candidateNode in currentNode.neighbors:
+
+				# increment distance for every edge you cross in the node-grid-graph
+				candidateNode.distance = currentNode.distance + 1
+
+				if not candidateNode.position in closedSet:
+					openQueue.put(candidateNode)
+
+		# No ghost was found in this direction
+		return self.maxDistance
+
+	def getCapsuleDistance(self, state, action):
+		# get the relevant positions
+		previousPosition = state.getPacmanState().getPosition()
+		newPosition = state.generateSuccessor(0, action).getPacmanState().getPosition()
+
+		# setup data structures for the search
+		openQueue = Queue()
+		closedSet = set()
+
+		# ensures we 'close of our back' and start searching only in the given direction
+		if action != Directions.STOP:
+
+			closedSet.add(previousPosition)
+
+			root = self.nodes[newPosition[0]][newPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		else:
+			root = self.nodes[previousPosition[0]][previousPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		# start the BF search
+		while not openQueue.empty():
+
+			# pop new node and add it to the closed set
+			currentNode = openQueue.get()
+			closedSet.add(currentNode.position)
+
+			# check for our objective
+			for capsule in state.getCapsules():
+				if capsule == currentNode.position:
+					return currentNode.distance
+
+			for candidateNode in currentNode.neighbors:
+
+				# increment distance for every edge you cross in the node-grid-graph
+				candidateNode.distance = currentNode.distance + 1
+
+				if not candidateNode.position in closedSet:
+					openQueue.put(candidateNode)
+
+
+		# No capsule was found in this direction
+		return self.maxDistance
+
+	def getIntersectionDistance(self, state, action):
+		previousPosition = state.getPacmanState().getPosition()
+		newPosition = state.generateSuccessor(0, action).getPacmanState().getPosition()
+
+		# setup data structures for the search
+		openQueue = Queue()
+		closedSet = set()
+
+		# ensures we 'close of our back' and start searching only in the given direction
+		if action != Directions.STOP:
+
+			closedSet.add(previousPosition)
+
+			root = self.nodes[newPosition[0]][newPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		else:
+			root = self.nodes[previousPosition[0]][previousPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		# start the BF search
+		while not openQueue.empty():
+
+			# pop new node and add it to the closed set
+			currentNode = openQueue.get()
+			closedSet.add(currentNode.position)
+
+			# check for our objective
+			if len(currentNode.neighbors) >= 3:
+				return currentNode.distance
+
+			for candidateNode in currentNode.neighbors:
+
+				# increment distance for every edge you cross in the node-grid-graph
+				candidateNode.distance = currentNode.distance + 1
+
+				if not candidateNode.position in closedSet:
+					openQueue.put(candidateNode)
+
+
+		# No intersection was found in this direction
+		return self.maxDistance
+
+	def getClosestGhost(self, state, action):
+		# get the relevant positions
+		previousPosition = state.getPacmanState().getPosition()
+		newPosition = state.generateSuccessor(0, action).getPacmanState().getPosition()
+
+		# setup data structures for the search
+		openQueue = Queue()
+		closedSet = set()
+
+		# ensures we 'close of our back' and start searching only in the given direction
+		if action != Directions.STOP:
+
+			closedSet.add(previousPosition)
+
+			root = self.nodes[newPosition[0]][newPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		else:
+			root = self.nodes[previousPosition[0]][previousPosition[1]]
+			root.distance = 1
+			openQueue.put(root)
+
+		# start the BF search
+		while not openQueue.empty():
+
+			# pop new node and add it to the closed set
+			currentNode = openQueue.get()
+			closedSet.add(currentNode.position)
+
+			# check for our objective
+			# round ghost positions in case they are inbetween nodes
+			# this happens when they are scared and have reduced movement speed
+			for ghost in state.getGhostStates():
+				if round(ghost.getPosition()[0]) == currentNode.position[0]:
+					if round(ghost.getPosition()[1]) == currentNode.position[1]:
+						return ghost
+
+			for candidateNode in currentNode.neighbors:
+				# increment distance for every edge you cross in the node-grid-graph
+				candidateNode.distance = currentNode.distance + 1
+
+				if not candidateNode.position in closedSet:
+					openQueue.put(candidateNode)
+
+
+		# No ghost was found in this direction
+		return None
+
+	def getFeatures(self, state, action):
+		features = CustomCounter()
+
+		# ghost proximity
+		ghostDistance = float(self.getGhostDistance(state, action))
+		ghost = self.getClosestGhost(state, action)
+
+		# food proximity
+		foodDistance = float(self.getFoodDistance(state, action))
+
+		# disjunction proximity
+		intersectionDistance = float(self.getIntersectionDistance(state, action))
+
+		# capsule proximity
+		capsuleDistance = float(self.getCapsuleDistance(state, action))
+
+		# total number of food collected
+		progress = 1.0 - float(state.generateSuccessor(0, action).getNumFood()) / float(self.totalFoodCount)
+
+		features["ghost-distance"] = 1 / ghostDistance
+		features["food-distance"] = 1 / foodDistance
+		features["intersection-with-ghost"] = 1 / intersectionDistance
+		features["capsule-distance"] = 1 / capsuleDistance
+		features["progress"] = progress
+		features["bias"] = 1.0
+
+		if action != Directions.STOP and self.getFoodDistance(state, action) - 1 < self.getFoodDistance(state, Directions.STOP):
+			features["getting-closer-to-food"] = 1
+
+		if ghost != None:
+			if ghost.scaredTimer > 0:
+				features["scared-ghost"] = 1
+		else:
+			ghost = self.getClosestGhost(state, Directions.STOP)
+			if ghost != None and ghost.scaredTimer > 0:
+				features["scared-ghost"] = 1
+
+		return features
